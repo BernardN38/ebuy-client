@@ -4,12 +4,18 @@ import Home from "./pages/home/Home";
 import Layout from "./shared/layout/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import Login from "./pages/login/Login";
+import CreateProduct from "./pages/createProduct/CreateProduct";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    children: [{ path: "/home", element: <Home /> }],
+    children: [
+      { path: "/home", element: <Home /> },
+      { path: "/login", element: <Login /> },
+      { path: "/products/create", element: <CreateProduct /> },
+    ],
   },
 ]);
 

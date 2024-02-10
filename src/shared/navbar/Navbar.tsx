@@ -12,10 +12,22 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Link } from "react-router-dom";
 
-const pages = ["home"];
+const pages = ["home", "login", "products/create"];
 const settings = ["Profile"];
+
+interface Alert {
+  id: number;
+  message: string;
+}
+
+const alerts: Alert[] = [
+  { id: 1, message: "This is the first alert." },
+  { id: 2, message: "This is the second alert." },
+  { id: 3, message: "This is the third alert." },
+];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -24,12 +36,20 @@ function Navbar() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
+  const [anchorElAlert, setAnchorElAlert] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
+  };
+
+  const handleOpenAlertMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElAlert(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -38,6 +58,10 @@ function Navbar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleCloseAlertMenu = () => {
+    setAnchorElAlert(null);
   };
 
   return (
@@ -62,8 +86,12 @@ function Navbar() {
           >
             LOGO
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -123,7 +151,12 @@ function Navbar() {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page}
@@ -136,8 +169,45 @@ function Navbar() {
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
+          <Box>
+            <Tooltip title="Open alerts">
+              <IconButton onClick={handleOpenAlertMenu}>
+                <NotificationsIcon sx={{ color: "white" }} />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElAlert}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElAlert)}
+              onClose={handleCloseAlertMenu}
+            >
+              {alerts.map((alert) => (
+                <MenuItem
+                  key={alert.id}
+                  onClick={handleCloseAlertMenu}
+                  // component={Link}
+                  // to={`/alerts/${setting}`}
+                >
+                  {alert.message}
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <Box
+            sx={{
+              flexGrow: 0,
+            }}
+          >
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -176,4 +246,5 @@ function Navbar() {
     </AppBar>
   );
 }
+
 export default Navbar;

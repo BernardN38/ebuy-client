@@ -1,11 +1,14 @@
 import { Box } from "@mui/material";
 import Navbar from "../navbar/Navbar";
 import { Outlet } from "react-router-dom";
+import React from "react";
 function Layout() {
   return (
     <Box width={"100vw"}>
       <Navbar />
-      <Outlet />
+      <React.Suspense>
+        <Outlet />
+      </React.Suspense>
     </Box>
   );
 }
