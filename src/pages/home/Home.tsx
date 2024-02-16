@@ -3,9 +3,38 @@ import FreeSolo from "../../shared/search/Search";
 import RecentProducts from "../../shared/recentPoducts/RecentProducts";
 import ProductServiceAPI, { Product } from "../../backendApi/productServiceApi";
 import { useEffect, useState } from "react";
+import axios from "axios";
 // import { Canvas, useFrame, ThreeElements, useLoader } from "@react-three/fiber";
 // import { OBJLoader } from "three/examples/jsm/Addons.js";
+// axios
+//   .get("http://localhost:8083/echo", {
+//     headers: {
+//       "Custom-Header": "value",
+//     },
+//   })
+//   .then((response) => {
+//     // Once the server responds, establish WebSocket connection
+//     const socket = new WebSocket("ws://localhost:8083/echo");
 
+//     socket.onopen = function () {
+//       console.log("WebSocket connection established.");
+//     };
+
+//     socket.onmessage = function (event) {
+//       console.log("Received message:", event.data);
+//     };
+
+//     socket.onerror = function (error) {
+//       console.error("WebSocket error:", error);
+//     };
+
+//     socket.onclose = function (event) {
+//       console.log("WebSocket connection closed:", event);
+//     };
+//   })
+//   .catch((error) => {
+//     console.error("Error:", error);
+//   });
 function Home() {
   const [products, setProducts] = useState(Array<Product>);
   const productApi = ProductServiceAPI.getInstance("https://127.0.0.1:443");
