@@ -1,1 +1,1 @@
-export const serverUrl = "https://127.0.0.1:443"
+export const serverUrl = "https://192.168.0.3:443"
