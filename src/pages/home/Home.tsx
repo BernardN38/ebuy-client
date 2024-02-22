@@ -3,7 +3,7 @@ import FreeSolo from "../../shared/search/Search";
 import RecentProducts from "../../shared/recentPoducts/RecentProducts";
 import ProductServiceAPI, { Product } from "../../backendApi/productServiceApi";
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 // import { Canvas, useFrame, ThreeElements, useLoader } from "@react-three/fiber";
 // import { OBJLoader } from "three/examples/jsm/Addons.js";
 // axios

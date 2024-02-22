@@ -40,7 +40,7 @@ export default function FreeSolo(props: Props) {
           fullWidth
           options={props.products || []}
           value={selectedProduct}
-          onChange={(event, newValue) => {
+          onChange={(_, newValue) => {
             // Ensure newValue is of type Product | null
             setSelectedProduct(newValue as Product | null);
           }}
