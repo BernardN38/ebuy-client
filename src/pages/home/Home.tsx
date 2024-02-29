@@ -37,7 +37,7 @@ import { useEffect, useState } from "react";
 //   });
 function Home() {
   const [products, setProducts] = useState(Array<Product>);
-  const productApi = ProductServiceAPI.getInstance("https://127.0.0.1:443");
+  const productApi = ProductServiceAPI.getInstance();
 
   useEffect(() => {
     productApi
@@ -52,7 +52,7 @@ function Home() {
       });
   }, []);
   return (
-    <Box width="100%" height="100vh">
+    <Box width="100%" height="100vh" m={0} p={0}>
       <FreeSolo products={products} />
       <Box sx={{ pt: 3, px: 2, width: "90%" }}>
         <RecentProducts products={products} />

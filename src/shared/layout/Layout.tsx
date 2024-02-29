@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import React from "react";
 function Layout() {
   return (
-    <Box width={"100vw"}>
+    <Box width={"100%"} margin={0}>
       <Navbar />
       <React.Suspense>
         <Outlet />
